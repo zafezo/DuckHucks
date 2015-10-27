@@ -1,0 +1,15 @@
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+<%= image_tag @user.image_url(:thumb).to_s if @user.image?%>
+</p>
+
+<%= link_to "Create New Event", new_event_path  %>

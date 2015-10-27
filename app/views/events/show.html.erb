@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@event.latitude}%2C#{@event.longitude}" %>
+
+<p>
+  <strong>CurrentID:</strong>
+  <%= current_user.id %>
+</p>
+
+<p>
+  <strong>params[:id]:</strong>
+  <%= @event.user_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @head_user.name  %>(<%= @head_user.email %>)
+</p>
+
+<p>Other members</p><br/>
+<% @event.members.each do |e| %>
+<p>
+  <%= e.user.name  %>(<%= e.user.email %>)
+</p>
+<% end %>
+<%= link_to 'Join',  join_event_path(@event) %>
+<%= link_to 'Leave',  leave_event_path(@event) %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
